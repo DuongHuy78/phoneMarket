@@ -28,7 +28,7 @@ public class LoginController extends HttpServlet {
             HttpSession session = req.getSession();
             session.setAttribute("user", user.getUsername());  // Lưu vào session
             if(user.isRole()){
-                resp.sendRedirect("/home");
+                resp.sendRedirect("/jsp/admin/home.jsp");
             }else {
                 resp.sendRedirect(req.getContextPath() + "/products");
             }// Thành công
