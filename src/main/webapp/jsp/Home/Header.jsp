@@ -2,11 +2,10 @@
 <header class="header">
     <div class="container">
         <div class="header-left">
-            <a href="#" class="logo">
+            <a href="${pageContext.request.contextPath}/" class="logo">
                 <span class="logo-text">CellphoneS</span>
             </a>
 
-            <!-- BỌC 2 NÚT NÀY LẠI -->
             <div class="catalog-group">
                 <div class="category-dropdown">
                     <button class="btn-category">
@@ -30,19 +29,17 @@
             </div>
         </div>
 
-        <!-- GIỮA: Tìm kiếm -->
         <div class="search-bar">
             <input type="text" placeholder="Bạn muốn mua gì hôm nay?" />
             <button><i class="fas fa-search"></i></button>
         </div>
 
-        <!-- PHẢI: Giỏ hàng + Đăng nhập -->
         <div class="header-actions">
             <a href="#" class="cart-icon">
                 <i class="fas fa-shopping-cart"></i>
                 <span class="badge">3</span>
             </a>
-            <a href="#" class="login-btn">Đăng nhập</a>
+            <a href="${pageContext.request.contextPath}/login" class="login-btn">Đăng nhập</a>
         </div>
     </div>
 </header>

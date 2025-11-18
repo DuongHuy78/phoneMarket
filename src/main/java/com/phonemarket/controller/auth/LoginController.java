@@ -12,11 +12,11 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
-    private authBO authBO = new authBO();
+    private final authBO authBO = new authBO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/login.jsp").forward(req, resp);
+        req.getRequestDispatcher("/jsp/auth/login.jsp").forward(req, resp);
     }
 
     @Override

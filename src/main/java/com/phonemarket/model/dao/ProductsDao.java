@@ -14,7 +14,7 @@ public class ProductsDao {
     }
     //TODO: sửa lại thông tin kết nối database cho đúng
     private Connection getConnection() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jsp_example", "root", "112233";
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jsp_example", "root", "000000");
         return conn;
     }
 
@@ -77,13 +77,44 @@ public class ProductsDao {
             return ps.executeUpdate() > 0;
         }
     }
+    public List<Products> getAllProducts() throws SQLException {
+        return findAll();
+    }
+
+    public Products getProductById(int id) throws SQLException {
+        return findById(id).orElse(null);
+    }
+
+    public boolean addProduct(Products product) throws SQLException {
+        return insert(product) > 0;
+    }
+
+    public List<Products> searchProductsByName(String keyword) throws SQLException {
+        String sql = "SELECT id, name, description, price FROM products WHERE name LIKE ?";
+        List<Products> list = new ArrayList<>();
+        try (Connection c = getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setString(1, "%" + keyword + "%");
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    list.add(mapRow(rs));
+                }
+            }
+        }
+        return list;
+    }
     //TODO: coi lại database và sửa lại hàm mapRow bên dưới
-//    private Products mapRow(ResultSet rs) throws SQLException {
-//        return new Products(
-//                rs.getInt("id"),
-//                rs.getString("name"),
-//                rs.getString("description"),
-//                rs.getDouble("price")
-//        );
-//    }
+    private Products mapRow(ResultSet rs) throws SQLException {
+        Products p = new Products(0, "", 0, "", "", 0);
+        p.setId(rs.getInt("id"));
+
+        String name = rs.getString("name");
+        p.setName(name != null ? name.trim() : "");
+
+        String desc = rs.getString("description");
+        p.setDescription(desc != null ? desc : "");
+
+        p.setPrice(rs.getInt("price"));
+        return p;
+    }
 }

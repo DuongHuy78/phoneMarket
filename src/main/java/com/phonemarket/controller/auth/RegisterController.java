@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet("/register")
 public class RegisterController extends HttpServlet {
-    private authBO authBO = new authBO();
+    private final authBO authBO = new authBO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
