@@ -2,6 +2,8 @@ package com.phonemarket.model.bo;
 
 import com.phonemarket.model.bean.Products;
 import com.phonemarket.model.dao.ProductsDao;
+
+import java.sql.SQLException;
 import java.util.List;
 
 public class ProductsBo {
@@ -13,12 +15,24 @@ public class ProductsBo {
 
     // Lấy tất cả sản phẩm
     public List<Products> getAllProducts() {
-        return productsDao.getAllProducts();
+        try {
+//            List<Products> temp = productsDao.findAll();
+//            for(int i = 0; i < temp.size(); i++) {
+//                System.out.println(temp.get(i).getName());
+//            }
+            return productsDao.findAll();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // Lấy sản phẩm theo ID
     public Products getProductById(int id) {
-        return productsDao.getProductById(id);
+        try {
+            return productsDao.findById(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // Thêm sản phẩm mới
@@ -30,7 +44,11 @@ public class ProductsBo {
         if (product.getPrice() <= 0) {
             return false;
         }
-        return productsDao.addProduct(product);
+        try {
+            return productsDao.insert(product);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // Cập nhật sản phẩm
@@ -38,7 +56,11 @@ public class ProductsBo {
         if (product == null || product.getId() <= 0) {
             return false;
         }
-        return productsDao.updateProduct(product);
+        try {
+            return productsDao.update(product);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // Xóa sản phẩm
@@ -46,14 +68,22 @@ public class ProductsBo {
         if (id <= 0) {
             return false;
         }
-        return productsDao.deleteProduct(id);
+        try {
+            return productsDao.delete(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // Tìm kiếm sản phẩm theo tên
-    public List<Products> searchProductsByName(String keyword) {
+    public List<Products> searchProductsByName(String keyword) throws SQLException {
         if (keyword == null || keyword.trim().isEmpty()) {
             return getAllProducts();
         }
-        return productsDao.searchProductsByName(keyword);
+        try {
+            return productsDao.findByName(keyword);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
