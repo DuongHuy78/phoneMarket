@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -19,7 +20,7 @@
     <nav class="sidebar-nav">
       <ul>
         <li><a href="${pageContext.request.contextPath}/admin/home.jsp"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/products"><i class="fas fa-list"></i> Products List</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/products/"><i class="fas fa-list"></i> Products List</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/products/add" class="active"><i class="fas fa-box"></i> Add Product</a></li>
       </ul>
     </nav>

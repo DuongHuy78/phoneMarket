@@ -1,5 +1,7 @@
 package com.phonemarket.controller.admin;
 
+import com.phonemarket.model.bean.Products;
+import com.phonemarket.model.bo.ProductsBo;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,6 +12,7 @@ import jakarta.servlet.http.Part;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/admin/products/*")
 //để chương trình có thể truy xuất và xử lý các yêu cầu tải lên tệp tin
@@ -22,7 +25,16 @@ public class ProductsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getPathInfo();
-        if ("/add".equals(action)) {
+        if("/".equals(action) || action == null) {
+            ProductsBo productsBo = new ProductsBo();
+            try {
+                req.setAttribute("productsList", productsBo.getAllProducts());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            req.getRequestDispatcher("/jsp/admin/products/homeProducts.jsp").forward(req, resp);
+        }
+        else if ("/add".equals(action)) {
             req.getRequestDispatcher("/jsp/admin/products/addProducts.jsp").forward(req, resp);
         } else {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -54,7 +66,12 @@ public class ProductsController extends HttpServlet {
             String imageDbPath = "/assets/images/products/" + imageFileName;
             Products newProduct = new Products(0, name, price, description, imageDbPath, stock_quantity);
             ProductsBo productsBo = new ProductsBo();
-            boolean isAdded = productsBo.addProduct(newProduct);
+            boolean isAdded = false;
+            try {
+                isAdded = productsBo.addProduct(newProduct);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             if (isAdded) {
                 // Lưu tệp tin vào thư mục đã chỉ định
                 imagePart.write(uploadPath + imageFileName);
