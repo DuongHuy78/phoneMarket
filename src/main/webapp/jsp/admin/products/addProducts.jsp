@@ -35,6 +35,7 @@
     </div>
     <nav class="sidebar-nav">
       <ul>
+        <li><a href="${pageContext.request.contextPath}/admin/home.jsp"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/products"><i class="fas fa-list"></i> Products List</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/products/add" class="active"><i class="fas fa-box"></i> Add Product</a></li>
       </ul>
@@ -54,7 +55,8 @@
     </header>
 
     <section class="form-section">
-      <form action="${pageContext.request.contextPath}/admin/products/add" method="post" class="product-form">
+        <%-- functype="multipart/form-data" cho phép gửi dữ liệu file  --%>
+      <form action="${pageContext.request.contextPath}/admin/products/add" method="post" class="product-form" enctype="multipart/form-data">
         <div class="form-grid">
 
           <div class="form-group">
@@ -69,7 +71,7 @@
 
           <div class="form-group">
             <label for="stock">Stock Quantity</label>
-            <input type="number" id="stock" name="stockQuantity" min="0" value="${param.stockQuantity != null ? param.stockQuantity : 0}" required>
+            <input type="number" id="stock" name="stock_quantity" min="0" value="${param.stockQuantity != null ? param.stockQuantity : 0}" required>
           </div>
 
           <div class="form-group full-width">
@@ -78,8 +80,8 @@
           </div>
 
           <div class="form-group">
-            <label for="imageURL">Image URL</label>
-            <input type="url" id="imageURL" name="imageUrl" value="${param.imageUrl}">
+            <label for="imageURL">Image file</label>
+            <input type="file" id="imageURL" name="imageUrl" value="${param.imageUrl}">
           </div>
 
           <div class="form-group checkbox-group">
