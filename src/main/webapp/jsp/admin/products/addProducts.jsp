@@ -19,7 +19,8 @@
     <nav class="sidebar-nav">
       <ul>
         <li><a href="${pageContext.request.contextPath}/admin/home.jsp"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/addProducts.jsp" class="active"><i class="fas fa-box"></i> Add Product</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/products"><i class="fas fa-list"></i> Products List</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/products/add" class="active"><i class="fas fa-box"></i> Add Product</a></li>
       </ul>
     </nav>
   </aside>
@@ -29,8 +30,8 @@
       <p>Fill in the product details to insert into the catalog.</p>
     </header>
     <section class="form-section">
-      <form action="${pageContext.request.contextPath}/admin/products/create" method="post" enctype="multipart/form-data" class="product-form">
-        <!-- group dùng để layout theo grid -->
+        <%-- functype="multipart/form-data" cho phép gửi dữ liệu file  --%>
+      <form action="${pageContext.request.contextPath}/admin/products/add" method="post" class="product-form" enctype="multipart/form-data">
         <div class="form-grid">
           <div class="form-group">
             <label for="name">Product Name</label>
@@ -53,8 +54,8 @@
           </div>
 
           <div class="form-group">
-            <label for="image">Image URL</label>
-            <input type="url" id="image" name="image_url">
+            <label for="imageURL">Image file</label>
+            <input type="file" id="imageURL" name="imageUrl" value="${param.imageUrl}">
           </div>
 
           <div class="form-group checkbox-group">
