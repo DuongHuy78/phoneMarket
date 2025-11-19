@@ -17,6 +17,8 @@ public class Products {
         this.stock_quantity = stock_quantity;
     }
 
+
+
     public int getId() {
         return id;
     }
