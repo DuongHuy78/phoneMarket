@@ -1,4 +1,4 @@
-package com.phonemarket.model;
+package com.phonemarket.model.bean;
 
 public class User {
     private String username;

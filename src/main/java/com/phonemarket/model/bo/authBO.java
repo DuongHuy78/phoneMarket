@@ -1,7 +1,7 @@
-package com.phonemarket.bo;
+package com.phonemarket.model.bo;
 
-import com.phonemarket.dao.authDAO;
-import com.phonemarket.model.User;
+import com.phonemarket.model.dao.authDAO;
+import com.phonemarket.model.bean.User;
 
 public class authBO {
     authDAO authDao = new authDAO();
