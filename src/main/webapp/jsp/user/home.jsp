@@ -7,21 +7,21 @@
     <title>CellphoneS - Trang chủ</title>
 
 
-    <link rel="stylesheet" href="/phoneMarket/css/home.css" />
+    <link rel="stylesheet" href="/css/home.css" />
 
     <!-- Font Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <jsp:include page="/jsp/Home/Header.jsp" />
-    <jsp:include page="/jsp/Home/Banner.jsp" />
-    <jsp:include page="/jsp/Home/BrandFilter.jsp" />
-    <jsp:include page="/jsp/Home/CategoryFilter.jsp" />
-    <jsp:include page="/jsp/Home/FlashSale.jsp" />
-    <jsp:include page="/jsp/Home/FilterBar.jsp" />
-    <jsp:include page="/jsp/Home/ProductGrid.jsp" />
-    <jsp:include page="/jsp/Home/Footer.jsp" />
+    <%@ include file="/jsp/user/component/Header.jsp" %>
+    <%@ include file="/jsp/user/component/Banner.jsp" %>
+    <%@ include file="/jsp/user/component/BrandFilter.jsp" %>
+    <%@ include file="/jsp/user/component/CategoryFilter.jsp" %>
+    <%@ include file="/jsp/user/component/FlashSale.jsp" %>
+    <%@ include file="/jsp/user/component/FilterBar.jsp" %>
+    <%@ include file="/jsp/user/component/ProductGrid.jsp" %>
+    <%@ include file="/jsp/user/component/Footer.jsp" %>
 
     <!-- Mobile Nav -->
     <div class="mobile-bottom-nav">

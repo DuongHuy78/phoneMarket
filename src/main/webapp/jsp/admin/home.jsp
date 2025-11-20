@@ -7,46 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard - PhoneMarket</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="../../css/admin.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/component/dropdown.css">
 </head>
 <body>
 <div class="admin-wrapper">
   <!-- Sidebar Menu (CRUD Functions) -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <h2><i class="fas fa-mobile-alt"></i> PhoneMarket Admin</h2>
-    </div>
-    <nav class="sidebar-nav">
-      <ul>
-        <li><a href="${pageContext.request.contextPath}/admin/home.jsp" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/products/addPProduct.jsp"><i class="fas fa-box"></i> Quản lý Sản phẩm </a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="fas fa-shopping-cart"></i> Quản lý Đơn hàng</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/customers"><i class="fas fa-users"></i> Quản lý Khách hàng</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/reports"><i class="fas fa-chart-bar"></i> Báo cáo</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/settings"><i class="fas fa-cog"></i> Cài đặt</a></li>
-      </ul>
-    </nav>
-  </aside>
+  <%@ include file="/jsp/admin/component/sidebar.jsp" %>
 
   <!-- Main Content -->
   <main class="main-content">
     <!-- Header -->
-    <header class="header">
-      <div class="header-left">
-        <i class="fas fa-bars menu-toggle"></i>
-        <h1>Dashboard</h1>
-      </div>
-      <div class="header-right">
-        <div class="search-bar">
-          <i class="fas fa-search"></i>
-          <input type="text" placeholder="Search or type command...">
-        </div>
-        <div class="user-profile">
-          <span>MuSher</span>
-          <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="User Avatar" class="avatar">
-        </div>
-      </div>
-    </header>
+    <%@ include file="/jsp/admin/component/header.jsp" %>
 
     <!-- Stats Cards -->
     <section class="stats-grid">
@@ -149,5 +121,6 @@
   });
   // Nếu dùng Chart.js, thêm <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> và code canvas
 </script>
+<script src="/js/admin/dropdown.js"></script>
 </body>
 </html>

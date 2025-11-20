@@ -1,10 +1,10 @@
 package com.phonemarket.bo;
 
-import com.phonemarket.dao.authDao;
+import com.phonemarket.dao.authDAO;
 import com.phonemarket.model.User;
 
 public class authBO {
-    authDao authDao = new authDao();
+    authDAO authDao = new authDAO();
 
 
 

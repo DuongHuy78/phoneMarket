@@ -66,7 +66,7 @@
     <div class="auth-right">
         <h2>Welcome to register</h2>
         <p>Already have an account?</p>
-        <a href="/login.jsp" class="auth-btn secondary">Sign In</a>
+        <a href="/login" class="auth-btn secondary">Sign In</a>
     </div>
 </div>
 

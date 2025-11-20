@@ -49,7 +49,7 @@
     <div class="auth-right">
         <h2>Welcome to login</h2>
         <p>Don't have an account?</p>
-        <a href="register.jsp" class="auth-btn secondary">Sign Up</a>
+        <a href="/register" class="auth-btn secondary">Sign Up</a>
     </div>
 </div>
 <script src="/js/auth/login-validation.js"></script>
