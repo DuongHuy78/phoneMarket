@@ -1,7 +1,7 @@
-package com.phonemarket.dao;
+package com.phonemarket.model.dao;
 
 import com.phonemarket.connection.ConnectJDBC;
-import com.phonemarket.model.User;
+import com.phonemarket.model.bean.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

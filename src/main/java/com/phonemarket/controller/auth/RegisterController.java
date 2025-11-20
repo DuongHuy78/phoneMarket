@@ -1,7 +1,7 @@
 package com.phonemarket.controller.auth;
 
-import com.phonemarket.bo.authBO;
-import com.phonemarket.model.User;
+import com.phonemarket.model.bo.authBO;
+import com.phonemarket.model.bean.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
