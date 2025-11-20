@@ -14,14 +14,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <%@ include file="/jsp/Home/Header.jsp" %>
-    <%@ include file="/jsp/Home/Banner.jsp" %>
-    <%@ include file="/jsp/Home/BrandFilter.jsp" %>
-    <%@ include file="/jsp/Home/CategoryFilter.jsp" %>
-    <%@ include file="/jsp/Home/FlashSale.jsp" %>
-    <%@ include file="/jsp/Home/FilterBar.jsp" %>
-    <%@ include file="/jsp/Home/ProductGrid.jsp" %>
-    <%@ include file="/jsp/Home/Footer.jsp" %>
+    <jsp:include page="/jsp/Home/Header.jsp" />
+    <jsp:include page="/jsp/Home/Banner.jsp" />
+    <jsp:include page="/jsp/Home/BrandFilter.jsp" />
+    <jsp:include page="/jsp/Home/CategoryFilter.jsp" />
+    <jsp:include page="/jsp/Home/FlashSale.jsp" />
+    <jsp:include page="/jsp/Home/FilterBar.jsp" />
+    <jsp:include page="/jsp/Home/ProductGrid.jsp" />
+    <jsp:include page="/jsp/Home/Footer.jsp" />
 
     <!-- Mobile Nav -->
     <div class="mobile-bottom-nav">

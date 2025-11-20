@@ -24,14 +24,16 @@
                 <i class="fas fa-exclamation-triangle"></i> ${error}
             </div>
         </c:if>
-        <form action="${pageContext.request.contextPath}/login" method="post">
+        <form action="/login" method="post">
             <div class="input-group">
                 <label>USERNAME</label>
-                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="username" placeholder="Username" required id="username">
+                <span class="error-msg" id="usernameError"></span>
             </div>
             <div class="input-group">
                 <label>PASSWORD</label>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password" required id="password">
+                <span class="error-msg" id="passwordError"></span>
             </div>
             <div class="form-options">
                 <label class="checkbox">
@@ -50,5 +52,6 @@
         <a href="register.jsp" class="auth-btn secondary">Sign Up</a>
     </div>
 </div>
+<script src="/js/auth/login-validation.js"></script>
 </body>
 </html>

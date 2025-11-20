@@ -8,7 +8,9 @@ public class authBO {
 
 
 
-    public void register(String username, String password) {}
+    public boolean register(User user) {
+        return authDao.register(user);
+    }
 
     public User login(String username, String password) throws Exception {
         // Business validation

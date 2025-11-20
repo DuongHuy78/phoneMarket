@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard - PhoneMarket</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="../../css/admin.css">
 </head>
 <body>
 <div class="admin-wrapper">
@@ -19,7 +19,7 @@
     <nav class="sidebar-nav">
       <ul>
         <li><a href="${pageContext.request.contextPath}/admin/home.jsp" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/products"><i class="fas fa-box"></i> Quản lý Sản phẩm </a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/products/addPProduct.jsp"><i class="fas fa-box"></i> Quản lý Sản phẩm </a></li>
         <li><a href="${pageContext.request.contextPath}/admin/orders"><i class="fas fa-shopping-cart"></i> Quản lý Đơn hàng</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/customers"><i class="fas fa-users"></i> Quản lý Khách hàng</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/reports"><i class="fas fa-chart-bar"></i> Báo cáo</a></li>

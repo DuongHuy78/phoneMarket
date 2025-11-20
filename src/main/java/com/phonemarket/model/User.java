@@ -12,8 +12,14 @@ public class User {
     public User() {
 
     }
-    public User(String username, String password, int userId, String email, String phone, String address, String fullName, boolean role) {
-
+    public User(String username, String password, String email, String phone, String address, String fullName) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.fullName = fullName;  // Assign fullName param vào fullname field
+        this.role = false;  // Default role = false (user thường)
     }
     public String getUsername() {
         return username;

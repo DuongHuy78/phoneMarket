@@ -12,11 +12,11 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
-    private authBO authBO = new authBO();
+    private final authBO authBO = new authBO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/login.jsp").forward(req, resp);
+        req.getRequestDispatcher("/jsp/auth/login.jsp").forward(req, resp);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class LoginController extends HttpServlet {
             HttpSession session = req.getSession();
             session.setAttribute("user", user.getUsername());  // Lưu vào session
             if(user.isRole()){
-                resp.sendRedirect("/home");
+                resp.sendRedirect("/jsp/admin/home.jsp");
             }else {
                 resp.sendRedirect(req.getContextPath() + "/products");
             }// Thành công
