@@ -7,7 +7,7 @@
     <title>CellphoneS - Trang chủ</title>
 
 
-    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css" />
 
     <!-- Font Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">

@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Profile - Phone Market</title>
-      <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin-home.css">
+      <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/home.css">
       <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/admin-table.css">
       <link rel="script" src="js/component/sidebar.js"></script>
 </head>
@@ -31,19 +31,22 @@
             </header>
 
             <!-- Notifications -->
-            <c:if test="${not empty success}">
-                <div class="alert alert-success">
-                    <span class="alert-icon">✓</span>
-                    <span>${success}</span>
-                    <button class="alert-close" onclick="this.parentElement.remove()">×</button>
-                </div>
+            <c:if test="${not empty sessionScope.success}">
+              <div class="alert alert-success">
+                <span class="alert-icon">✓</span>
+                <span><c:out value="${sessionScope.success}" escapeXml="true"/></span>
+                <button class="alert-close" onclick="this.parentElement.remove()">×</button>
+              </div>
+              <c:remove var="success" scope="session"/>
             </c:if>
-            <c:if test="${not empty error}">
-                <div class="alert alert-error">
-                    <span class="alert-icon">✗</span>
-                    <span>${error}</span>
-                    <button class="alert-close" onclick="this.parentElement.remove()">×</button>
-                </div>
+
+            <c:if test="${not empty sessionScope.error}">
+              <div class="alert alert-error">
+                <span class="alert-icon">✗</span>
+                <span><c:out value="${sessionScope.error}" escapeXml="true"/></span>
+                <button class="alert-close" onclick="this.parentElement.remove()">×</button>
+              </div>
+              <c:remove var="error" scope="session"/>
             </c:if>
 
             <!-- Profile Content -->
