@@ -96,7 +96,7 @@ public class UsersDAO {
             ps.setString(3, user.getPhone());
             ps.setString(4, user.getAddress());
             ps.setBoolean(5, user.isRole());
-            ps.setInt(6, user.getUserId());  // ⚠ Bắt buộc set user_id
+            ps.setInt(6, user.getUserId());
 
             int rows = ps.executeUpdate();
             return rows > 0;

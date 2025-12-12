@@ -21,4 +21,4 @@
     </ul>
   </nav>
 </aside>
-<script src="/js/component/sidebar.js"></script>
+<script src="${pageContext.request.contextPath}/js/component/sidebar.js"></script>

@@ -16,8 +16,8 @@
             <img src="/images/avatar.jpg" alt="User Avatar" class="avatar">
             <!-- Dropdown Menu -->
             <div class="dropdown" id="userDropdown">
-                <a href="/admin/profile"><i class="fas fa-user"></i>Profile</a>
-                <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a href="${pageContext.request.contextPath}/admin/profile"><i class="fas fa-user"></i>Profile</a>
+                <a href="${pageContext.request.contextPath}/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
     </div>
