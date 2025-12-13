@@ -5,10 +5,15 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
     <welcome-file-list>
-        <welcome-file>jsp/user/home.jsp</welcome-file>
         <welcome-file>index.jsp</welcome-file>
+        <welcome-file>jsp/user/home.jsp</welcome-file>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
     </welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.ico</url-pattern>
+    </servlet-mapping>
+
 </web-app>
 

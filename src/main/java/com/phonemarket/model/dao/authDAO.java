@@ -22,7 +22,7 @@ public class authDAO {
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("email"));
-                user.setFullName(rs.getString("full_name"));
+                user.setFullName(rs.getString("fullname"));
                 user.setPhone(rs.getString("phone_number"));
                 user.setAddress(rs.getString("address"));
                 user.setRole(rs.getBoolean("role"));
@@ -39,7 +39,7 @@ public class authDAO {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        String sql = "INSERT INTO users (username, password, email,phone_number, address, fullname) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO users (username, password, email,phone_number, address, full_name) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConnectJDBC.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 

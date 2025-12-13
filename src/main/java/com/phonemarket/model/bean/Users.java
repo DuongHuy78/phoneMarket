@@ -7,7 +7,7 @@ public class Users {
     private String email;
     private String phone;
     private String address;
-    private String fullName;
+    private String fullname;
     private boolean role;
     public Users() {
 
@@ -18,7 +18,7 @@ public class Users {
         this.email = email;
         this.phone = phone;
         this.address = address;
-        this.fullName = fullName;  // Assign fullName param vào fullname field
+        this.fullname = fullName;  // Assign fullName param vào fullname field
         this.role = false;  // Default role = false (user thường)
     }
     public String getUsername() {
@@ -40,7 +40,7 @@ public class Users {
         return address;
     }
     public String getFullName() {
-        return fullName;
+        return fullname;
     }
     public boolean isRole() {
         return role;
@@ -69,7 +69,7 @@ public class Users {
     }
 
     public void setFullName(String fullName) {
-        this.fullName = fullName;
+        this.fullname = fullName;
     }
 
     public void setRole(boolean role) {

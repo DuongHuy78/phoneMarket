@@ -1,45 +1,62 @@
-package com.phonemarket.controller.admin.profile;
+package com.phonemarket.controller.user;
 
 import com.phonemarket.model.bean.Users;
 import com.phonemarket.model.bo.UsersBO;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/profile/*")
-public class profileController extends HttpServlet {
+import java.sql.SQLException;
+
+@WebServlet("/profile/*")
+public class ProfileController extends HttpServlet {
     @Override
-    protected void doGet(jakarta.servlet.http.HttpServletRequest req, jakarta.servlet.http.HttpServletResponse resp)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws jakarta.servlet.ServletException, java.io.IOException {
         String action = req.getPathInfo();
         if(action == null || "/".equals(action)) {
             int userId = (int) req.getSession().getAttribute("currentUserId");
-            System.out.println("Current User ID: " + userId); // Debug line to check the user ID
-            req.getRequestDispatcher("/jsp/admin/profile/profile.jsp").forward(req, resp);
+            Users user;
+            try {
+                user = new UsersBO().getUserById(userId);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            req.setAttribute("currentUser", user);
+            System.out.println("Current User ID: " + user.getUserId());
+            req.getRequestDispatcher("/jsp/user/profile/profile.jsp").forward(req, resp);
         } else if ("/edit".equals(action)) {
             int userId = (int) req.getSession().getAttribute("currentUserId");
             try {
                 Users user = new UsersBO().getUserById(userId);
                 req.setAttribute("currentUser", user);
-            } catch (java.sql.SQLException e) {
+            } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println("Current User ID: " + userId); // Debug line to check the user ID
-            req.getRequestDispatcher("/jsp/admin/profile/editProfile.jsp").forward(req, resp);
-            
+            System.out.println("DEBUG User profile controller Current User ID: " + userId);
+            req.getRequestDispatcher("/jsp/user/profile/editProfile.jsp").forward(req, resp);
+
         } else if ("/changePassword".equals(action)) {
-            req.getRequestDispatcher("/jsp/admin/profile/changePassword.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/user/profile/changePassword.jsp").forward(req, resp);
         } else {
-            resp.sendError(jakarta.servlet.http.HttpServletResponse.SC_NOT_FOUND);
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
     }
 
     @Override
-    protected void doPost(jakarta.servlet.http.HttpServletRequest req, jakarta.servlet.http.HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws jakarta.servlet.ServletException, java.io.IOException {
         String action = req.getPathInfo();
         if ("/edit".equals(action)) {
-            Users user = (Users) req.getSession().getAttribute("currentUser");
+            int userId = (int) req.getSession().getAttribute("currentUserId");
             UsersBO usersBO = new UsersBO();
+            Users user;
+            try {
+                user = usersBO.getUserById(userId);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
 
             // Lấy dữ liệu từ form
             String username = req.getParameter("username");
@@ -49,6 +66,7 @@ public class profileController extends HttpServlet {
             String address = req.getParameter("address");
 
             // Cập nhật thông tin người dùng
+            user.setUsername(username);
             user.setFullName(fullName);
             user.setEmail(email);
             user.setPhone(phone);
@@ -60,7 +78,7 @@ public class profileController extends HttpServlet {
             } else {
                 req.getSession().setAttribute("error", "Failed to update profile.");
             }
-            resp.sendRedirect(req.getContextPath() + "/admin/profile"); // Chuyển hướng về trang profile
+            resp.sendRedirect(req.getContextPath() + "/profile"); // Chuyển hướng về trang profile
         } else if ("/changePassword".equals(action)) {
             String currentPassword = req.getParameter("currentPassword");
             String newPassword = req.getParameter("newPassword");
@@ -69,10 +87,10 @@ public class profileController extends HttpServlet {
             if (usersBO.checkPassword(user.getUserId(), currentPassword)) {
                 usersBO.updatePassword(user.getUserId(), newPassword);
                 req.getSession().setAttribute("success", "Password updated successfully.");
-                resp.sendRedirect(req.getContextPath() + "/admin/profile");
+                resp.sendRedirect(req.getContextPath() + "/profile");
             } else {
                 req.getSession().setAttribute("error", "Current password is incorrect.");
-                resp.sendRedirect(req.getContextPath() + "/admin/profile");
+                resp.sendRedirect(req.getContextPath() + "/profile");
             }
         }
     }
