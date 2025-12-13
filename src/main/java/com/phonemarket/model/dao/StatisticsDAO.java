@@ -127,7 +127,7 @@ public class StatisticsDAO {
 
     // ================================
     // 6. Đơn hàng gần nhất (JOIN users và order_details/products, GROUP_CONCAT products)
-    // Trả về List<Orders> với full_name và product_names
+    // Trả về List<Orders> với fullname và product_names
     // ================================
     public List<Orders> recentOrders() {
         String sql = """
