@@ -89,7 +89,7 @@
                             <button class="btn btn-primary" onclick="window.location.href='${pageContext.request.contextPath}/admin/profile/edit'">
                                 Edit Profile
                             </button>
-                            <button class="btn btn-secondary" onclick="window.location.href='${pageContext.request.contextPath}/admin/profile/change-password'">
+                            <button class="btn btn-secondary" onclick="window.location.href='${pageContext.request.contextPath}/admin/profile/changePassword'">
                                 Change Password
                             </button>
                         </div>

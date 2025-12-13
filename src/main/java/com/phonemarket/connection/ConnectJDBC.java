@@ -9,7 +9,7 @@ public class ConnectJDBC {
     private static final String URL =
             "jdbc:mysql://localhost:3306/phone_market_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private static final String USER = "root";
-    private static final String PASSWORD = "000000";
+    private static final String PASSWORD = "112233";
 
     static {
         try {

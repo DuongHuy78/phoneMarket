@@ -58,6 +58,12 @@
                     </div>
 
                     <form action="${pageContext.request.contextPath}/admin/profile/edit" method="post" id="editProfileForm">
+                        <div class="form-group full-width">
+                            <label for="userId">User ID <span class="required">*</span>
+                                <span class="read-only-badge">Read-Only</span>
+                            </label>
+                            <input type="text" id="userId" name="userId" value="${currentUser.userId}" readonly class="form-control read-only">
+                        </div>
                         <div class="form-grid">
                             <div class="form-group full-width">
                                 <label for="username">Username <span class="required">*</span></label>
